@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#b45309" />
+<meta name="description" content="Aplikasi monitoring ternak ayam petelur: pakan harian, umur, vaksin, dan pencatatan telur. Bisa dipakai offline." />
+<title>Ternak Ayam Petelur</title>
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="icon" href="assets/icons/icon-192.png" />
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
+<link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+<header class="app-bar">
+  <div>
+    <h1>Ternak Ayam Petelur</h1>
+    <p id="app-subjudul">Monitor pakan, umur, vaksin & telur</p>
+  </div>
+  <span id="status-jaringan" class="lonceng" title="Status koneksi">offline-ready</span>
+</header>
+
+<main id="konten"></main>
+
+<nav class="tab-bar" id="tab-bar">
+  <button data-tab="beranda" class="aktif"><span>🏠</span>Beranda</button>
+  <button data-tab="kandang"><span>🐔</span>Kandang</button>
+  <button data-tab="pakan"><span>🌾</span>Pakan</button>
+  <button data-tab="vaksin"><span>💉</span>Vaksin</button>
+  <button data-tab="telur"><span>🥚</span>Telur</button>
+  <button data-tab="panduan"><span>📘</span>Panduan</button>
+</nav>
+
+<script src="assets/js/standards.js"></script>
+<script src="assets/js/storage.js"></script>
+<script src="assets/js/hitung.js"></script>
+<script src="assets/js/ui.js"></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('sw.js').catch(function (e) {
+        console.warn('Service worker gagal didaftarkan (aplikasi tetap jalan):', e);
+      });
+    });
+  }
+</script>
+</body>
+</html>
